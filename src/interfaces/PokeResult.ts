@@ -36,5 +36,3 @@ export type PokeResult = PokeSuccess | PokeError
 export function isPokeError(input:PokeError|PokeSuccess):input is PokeError{
     return input['error'] !== undefined
 }
-
-export default PokeResult

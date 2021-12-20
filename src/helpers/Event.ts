@@ -1,33 +1,10 @@
-import { WriteStream } from 'fs'
-import { ServerResponse } from 'http'
-import PokeResult, { PokeError, PokeSuccess } from '../interfaces/PokeResult'
 
-/**
- * Defines protocol js.Poke supports
- */
-type Protocol = 'http'|'https';
+import { PokeError, PokeSuccess } from '../interfaces/PokeResult'
+import { PokeResult } from '../interfaces/PokeResult'
+import { EventCallbackFunctions, EventCallbacksContainer, Protocol, CallbackEvent, Stream } from '../@types/eventTypes'
 
-/**
- * Callback event name
- */
-export type CallbackEvent = 'data'|'error'|'response'|'end'
 
-/**
- * Defines types of stream
- */
-type Stream = WriteStream|ServerResponse
 
-/**
- * Defines container for different callbacks
- */
-type EventCallbacksContainer = {
-    data?: (chunk:string|Buffer) => void
-    error?: (result:PokeError) => void
-    response?: (param?:PokeSuccess) => void
-    end?: () => void
-}
-
-export type EventCallbackFunctions = EventCallbacksContainer[keyof EventCallbacksContainer]
 
 export class EventManagerClass {
     // callbacks container
@@ -90,7 +67,6 @@ export class EventManagerClass {
     }
 
     protected stream(writableStream: Stream):void {
-        // save stream
-        this.callbacks['stream'] = writableStream   
+        this.callbacks['stream'] = writableStream   // save stream
     }
 }

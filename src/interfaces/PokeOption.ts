@@ -38,5 +38,13 @@ export default interface PokeOption<Body> {
     /**
      * @description The password of basic auth
      */
-    password? : string
+    password? : string, 
+    
+    /**
+     * @description  when to run 
+     */
+
+     runWhen: PokeOption<Body> | null; 
+
+     synchronous: PokeOption<Body> | boolean
 }

@@ -4,10 +4,15 @@ import * as zlib from 'zlib'
 import { WriteStream } from 'fs'
 import { ServerResponse } from 'http'
 import PokeOption from './interfaces/PokeOption'
-import PokeResult, { isPokeError, PokeSuccess } from './interfaces/PokeResult'
+import { isPokeError, PokeSuccess } from './interfaces/PokeResult'
+import { PokeResult } from './interfaces/PokeResult'
 import { stringifyQuery } from './helpers/Query'
 import { JSONCallback, toJson, toJsonWithCallback } from './helpers/JSON'
-import { EventManagerClass, EventCallbackFunctions, CallbackEvent } from './helpers/Event'
+import { EventCallbackFunctions, CallbackEvent } from './@types/eventTypes'
+import { EventManagerClass  } from './helpers/Event'
+import { InterceptorManagerClass } from './helpers/InterceptorManager'
+
+
 
 /**
  * Class of "Poke"
